@@ -2,77 +2,116 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>We are under maintenance</title>
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23facc15' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 22L12 2 2 22h20z'/%3E%3Cpath d='M6 18h12'/%3E%3Cpath d='M10 10h4'/%3E%3C/svg%3E">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  
   <style>
+    * { box-sizing: border-box; }
+    
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: linear-gradient(135deg, #020617, #0f172a);
+      font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+      /* พื้นหลังโทนเข้มไล่สี */
+      background: radial-gradient(circle at top, #1e293b, #020617);
       color: #e5e7eb;
       display: flex;
       align-items: center;
       justify-content: center;
       height: 100vh;
       text-align: center;
+      overflow: hidden;
     }
 
     .box {
-      background: rgba(15, 23, 42, 0.85);
-      border-radius: 16px;
-      padding: 40px 48px;
-      box-shadow: 0 20px 50px rgba(0,0,0,.4);
-      max-width: 420px;
+      /* กล่องกระจก (Glassmorphism) */
+      background: rgba(30, 41, 59, 0.6);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 50px 40px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      max-width: 460px;
+      width: 90%;
+      position: relative;
     }
 
-    .icon {
+    /* สไตล์สำหรับ Emoji */
+    .emoji-icon {
       font-size: 72px;
       margin-bottom: 16px;
+      /* ใส่เงาให้ Emoji ลอยเด่นออกมาจากพื้นหลัง */
+      filter: drop-shadow(0 10px 10px rgba(0,0,0,0.3));
+      /* Animation ลอยขึ้นลงเบาๆ */
+      animation: float 3s ease-in-out infinite;
+      cursor: default;
     }
 
     h1 {
-      margin: 0 0 12px;
+      margin: 0 0 16px;
       font-size: 28px;
-      letter-spacing: .5px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 0.5px;
     }
 
     p {
       margin: 0;
       font-size: 16px;
       line-height: 1.6;
-      color: #cbd5f5;
+      color: #94a3b8;
     }
 
-    .bar {
-      margin-top: 28px;
-      height: 8px;
-      background: #1e293b;
-      border-radius: 999px;
+    /* --- แถบโหลดสไตล์ก่อสร้าง --- */
+    .bar-container {
+      margin-top: 35px;
+      height: 12px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 99px;
       overflow: hidden;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
     }
 
-    .bar span {
+    .construction-bar {
       display: block;
       height: 100%;
-      width: 40%;
-      background: repeating-linear-gradient(
-        45deg,
-        #facc15,
-        #facc15 10px,
-        #111827 10px,
-        #111827 20px
+      width: 100%;
+      border-radius: 99px;
+      
+      /* ลายขวาง เหลือง-ดำ */
+      background-image: repeating-linear-gradient(
+        -45deg,
+        #facc15,          
+        #facc15 15px,
+        #1e293b 15px,     
+        #1e293b 30px
       );
-      animation: move 1s linear infinite;
+      
+      background-size: 200% 100%;
+      box-shadow: 0 0 10px rgba(250, 204, 21, 0.4); 
+      animation: move-stripes 20s linear infinite; 
     }
 
-    @keyframes move {
+    @keyframes move-stripes {
       from { background-position: 0 0; }
-      to   { background-position: 40px 0; }
+      to   { background-position: 100% 0; }
     }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
   </style>
 </head>
 <body>
   <div class="box">
-    <div class="icon">🚧👷‍♂️</div>
+    <div class="emoji-icon">🚧👷‍♂️</div>
+    
     <h1>We are under maintenance</h1>
     <p>
       Sorry for the inconvenience.<br>
@@ -80,8 +119,8 @@
       Please check back again soon.
     </p>
 
-    <div class="bar">
-      <span></span>
+    <div class="bar-container">
+      <span class="construction-bar"></span>
     </div>
   </div>
 </body>
