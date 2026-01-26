@@ -1,1 +1,4 @@
-"# maintaince_page" 
+## How to use
+
+docker compose up -d
+
